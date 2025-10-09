@@ -115,6 +115,8 @@ jobs:
           llvm-version: 18
       - name: "Setup XMake"
         uses: xmake-io/github-action-setup-xmake@v1
+        with:
+          xmake-version: branch@dev
       - name: "Configure and Build"
         shell: cmd
         run: |
