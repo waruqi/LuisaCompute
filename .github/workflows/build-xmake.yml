@@ -117,7 +117,7 @@ jobs:
       - name: "Setup XMake"
         uses: xmake-io/github-action-setup-xmake@v1
         with:
-          xmake-version: xmakever
+          xmake-version: ${{ matrix.xmakever }}
       - name: "Configure and Build"
         shell: cmd
         run: |
