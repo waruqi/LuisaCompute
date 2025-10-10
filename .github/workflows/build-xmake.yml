@@ -83,10 +83,11 @@ jobs:
       matrix:
         config: [ release, debug ]
         compiler: [ msvc, clang-cl ]
+        xmakever: [ latest, branch@dev ]
     name: Windows / ${{ matrix.config }} / ${{ matrix.compiler }}
     runs-on: windows-2025
     concurrency:
-        group: ${{ github.ref }}-${{ github.base_ref }}-${{ github.head_ref }}-xmake-windows-${{ matrix.config }}-${{ matrix.compiler }}
+        group: ${{ github.ref }}-${{ github.base_ref }}-${{ github.head_ref }}-xmake-windows-${{ matrix.config }}-${{ matrix.compiler }}-${{ matrix.xmakever }}
         cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
@@ -116,7 +117,7 @@ jobs:
       - name: "Setup XMake"
         uses: xmake-io/github-action-setup-xmake@v1
         with:
-          xmake-version: branch@dev
+          xmake-version: xmakever
       - name: "Configure and Build"
         shell: cmd
         run: |
